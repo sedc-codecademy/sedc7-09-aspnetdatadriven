@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ADO.AuthorsDb", "ADO.AuthorsDb\ADO.AuthorsDb.sqlproj", "{116C2418-5E47-4E89-89AC-7467BB2C8CB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksApplication", "BooksApplication\BooksApplication.csproj", "{E5D12A7E-13C9-486E-A46B-78FB042CAA59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{116C2418-5E47-4E89-89AC-7467BB2C8CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116C2418-5E47-4E89-89AC-7467BB2C8CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116C2418-5E47-4E89-89AC-7467BB2C8CB4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{116C2418-5E47-4E89-89AC-7467BB2C8CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116C2418-5E47-4E89-89AC-7467BB2C8CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{116C2418-5E47-4E89-89AC-7467BB2C8CB4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E5D12A7E-13C9-486E-A46B-78FB042CAA59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D12A7E-13C9-486E-A46B-78FB042CAA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D12A7E-13C9-486E-A46B-78FB042CAA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D12A7E-13C9-486E-A46B-78FB042CAA59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {700F20CE-87B0-456F-9C30-245E630681B1}
+	EndGlobalSection
+EndGlobal

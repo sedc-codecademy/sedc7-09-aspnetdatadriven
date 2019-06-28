@@ -5,7 +5,8 @@ Welcome to the ASP.NET Data-Driven Subject. This subject is an addition to the p
 2. Knowledge of ASP.NET Framework
 3. Knowledge of manipulating databases using MSSQL
 4. Installed Visual Studio 2017
-5. Installed SQL Server Management Studio
+5. Installed SQL Server 
+6. Install SQL Server Management Studio
 ## Agenda 🎯
 This is the base agenda for this subject. The agenda is flexible and will evolve and change based on the progress that we make through out the classes. 
 1. ADO.NET

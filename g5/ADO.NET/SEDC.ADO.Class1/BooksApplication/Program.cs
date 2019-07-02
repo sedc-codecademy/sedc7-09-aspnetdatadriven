@@ -16,7 +16,9 @@ namespace BooksApplication
             //QueryParameterAuthors();
             //GetAllAuthorsStoredProcedure();
             //InsertAuthorWithTransaction();
+            Console.WriteLine("Awards:");
             GetAwards(); // Prints all awards ( ID, Name )
+            Console.WriteLine("Nominations:");
             GetNominations(); // Prints all nominations ( ID, BookTitle, Year, HasWon )
 
             Console.ReadLine();
@@ -215,6 +217,59 @@ namespace BooksApplication
 
             connection.Close();
         }
+        private static void GetAwards()
+        {
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
 
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Awards";
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            int awardId = 0;
+            string awardName = null;
+
+            while (dr.Read())
+            {
+
+                awardId = (int)dr["ID"];
+                awardName = (string)dr["AwardName"];
+
+                Console.WriteLine($"Id: {awardId} - Name: {awardName}");
+            }
+
+            connection.Close();
+        }
+        private static void GetNominations()
+        {
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT nom.ID, nov.Title, nom.YearNominated, nom.IsWinner FROM Nominations as nom JOIN Novels nov ON nom.BookID = nov.ID";
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            int nominationId = 0;
+            string bookTitle = null;
+            int yearNominated = 0;
+            bool? isWinner = null;
+
+            while (dr.Read())
+            {
+
+                nominationId = (int)dr["ID"];
+                bookTitle = (string)dr["Title"];
+                yearNominated = (int)dr["YearNominated"];
+                isWinner = dr.IsDBNull(3) ? false : (bool)dr["IsWinner"];
+
+                Console.WriteLine($"Id: {nominationId} - Book: {bookTitle} ({yearNominated}) Won: {isWinner}");
+            }
+
+            connection.Close();
+        }
     }
 }

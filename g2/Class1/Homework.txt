@@ -1,0 +1,8 @@
+Class 1 homework
+
+1. Create new database AdoNetDB
+2. Add table to the database named Author (ID, Firstname, Lastname...)
+3. Add table to the database named Book (ID, Title, Genre, AuthorID)
+4. Create simple app that will add/edit Authors and Books using Ado.Net
+
+Bonus: Create stored procedure for adding Authors and use it in your application to add new Authors

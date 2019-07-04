@@ -1,0 +1,6 @@
+Class 2 homework
+
+1. Use the database from the prevous homework
+2. Create simple app that will add/edit Authors and Books using Dapper
+3. Use the stored procedure for add authors
+4. Create method to get all authors with books using Query stringly typed one to one

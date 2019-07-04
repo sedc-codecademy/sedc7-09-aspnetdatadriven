@@ -119,7 +119,7 @@ Unit of Work is a design pattern that is used usually with repository pattern ha
 * Adding repositories in the unit of work class and using them from there
 * Using the repository pattern as a wrapper for the repositories that just handles committing or rejecting changes
 
-## Extra Materials
+## Extra Materials 📘
 * [Entity Framework Core on Console Application](https://www.tektutorialshub.com/entity-framework-core/ef-core-console-application/)
 * [Examples of all Data Anotations](https://www.learnentityframeworkcore.com/configuration/data-annotation-attributes)
 * [Fluent API Configurations](https://www.learnentityframeworkcore.com/configuration/fluent-api)

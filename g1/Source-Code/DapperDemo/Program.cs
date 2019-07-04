@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using da
 using Dapper;
 
 namespace DapperDemo
@@ -10,14 +9,14 @@ namespace DapperDemo
     {
         static void Main(string[] args)
         {
-            using (var connection = new SqlConnection(""))
+            using (var connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ToDoDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
                 connection.Open();
-               IEnumerable<dynamic> todos = 
-                    connection.Query<Todo>("select * from Todos");
-                foreach (dynamic todo in todos)
+                IEnumerable<Todo> todos =
+                     connection.Query<Todo>("select * from Todos");
+                foreach (Todo todo in todos)
                 {
-                    todo.ClimbTheMountain();
+                    Console.WriteLine($"#{todo.Id}, {todo.Description}, {   (todo.IsCompleted ? "completed" : "not completed") }");
                 }
             }
             Console.WriteLine("Hello World!");

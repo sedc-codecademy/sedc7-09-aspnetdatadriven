@@ -315,5 +315,23 @@ namespace ToDo.ConsoleApp
                 }
             }
         }
+
+        public int GetCount()
+        {
+            using (var sqlConnection = new SqlConnection(_connectionString))
+            {
+                sqlConnection.Open();
+                using (var sqlCommand = new SqlCommand
+                {
+                    Connection = sqlConnection,
+                    CommandText = $"select count(*) from dbo.Tasks"
+                })
+                {
+                    int result = (int)sqlCommand.ExecuteScalar();
+
+                    return result;
+                }
+            }
+        }
     }
 }

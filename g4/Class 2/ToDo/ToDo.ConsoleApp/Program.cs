@@ -10,23 +10,25 @@ namespace ToDo.ConsoleApp
             //InsertTaskTest();
 
             //UpdateTaskTest();
-            DeleteTask();
-            Console.ReadLine();
+            //DeleteTaskTest();
+            //GetCountTest();
+            //Console.ReadLine();
 
-            //IEnumerable<DataLayer.Entities.Task> tasks = taskRepository.GetAllAsync()
-            //                                                            .GetAwaiter()
-            //                                                            .GetResult();
-            //foreach (var task in tasks)
-            //{
-            //    Console.WriteLine("---------------------------------------------------");
-            //    Console.WriteLine($"Task Id:{task.Id} Title:{task.Title} Description:{task.Description} Priority:{task.Priority} Status:{task.Status} Type:{task.Type}");
-            //    foreach (var subtask in task.SubTasks)
-            //    {
-            //        Console.WriteLine($"Subtask Id: {subtask.Id}, Title: {subtask.Title}, Description: {subtask.Description}, Status: {subtask.Status},  ");
-            //    }
-            //    Console.WriteLine("---------------------------------------------------");
-            //}
-            //Console.WriteLine("Finished with tasks printing");
+            var taskRepository = new DapperTaskRepository();
+            IEnumerable<DataLayer.Entities.Task> tasks = taskRepository.GetAllAsync()
+                                                                        .GetAwaiter()
+                                                                        .GetResult();
+            foreach (var task in tasks)
+            {
+                Console.WriteLine("---------------------------------------------------");
+                Console.WriteLine($"Task Id:{task.Id} Title:{task.Title} Description:{task.Description} Priority:{task.Priority} Status:{task.Status} Type:{task.Type}");
+                foreach (var subtask in task.SubTasks)
+                {
+                    Console.WriteLine($"Subtask Id: {subtask.Id}, Title: {subtask.Title}, Description: {subtask.Description}, Status: {subtask.Status},  ");
+                }
+                Console.WriteLine("---------------------------------------------------");
+            }
+            Console.WriteLine("Finished with tasks printing");
             //Console.WriteLine("Enter task id:");
             //int taskId = int.Parse(Console.ReadLine());
             //var task = taskRepository.GetByIdAsync(taskId).GetAwaiter().GetResult();
@@ -38,10 +40,20 @@ namespace ToDo.ConsoleApp
             //var task = taskRepository.GetByTitle(taskTitle);
 
             //Console.WriteLine($"Task Id:{task.Id} Title:{task.Title} Description:{task.Description} Priority:{task.Priority} Status:{task.Status} Type:{task.Type}");
-            //Console.ReadLine();
+            Console.ReadLine();
         }
 
-        private static void DeleteTask()
+        private static void GetCountTest()
+        {
+            var taskRepository = new AdoNetTasksDbRepository();
+
+            var tasksCount = taskRepository.GetCount();
+            Console.WriteLine($"There are {tasksCount} tasks in the database");
+
+            Console.ReadLine();
+        }
+
+        private static void DeleteTaskTest()
         {
             var taskRepository = new AdoNetTasksDbRepository();
 

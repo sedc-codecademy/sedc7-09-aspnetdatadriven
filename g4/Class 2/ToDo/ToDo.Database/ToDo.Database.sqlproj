@@ -69,5 +69,6 @@
     <Build Include="dbo\Tables\SubTask.sql" />
     <Build Include="dbo\Stored Procedures\sp_GetTasks.sql" />
     <Build Include="dbo\Stored Procedures\sp_InsertTask.sql" />
+    <Build Include="dbo\Stored Procedures\sp_UpdateTask.sql" />
   </ItemGroup>
 </Project>

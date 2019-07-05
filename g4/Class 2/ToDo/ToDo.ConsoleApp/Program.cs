@@ -7,27 +7,10 @@ namespace ToDo.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var taskRepository = new AdoNetTasksDbRepository();
-            var task = new DataLayer.Entities.Task();
+            //InsertTaskTest();
 
-            Console.WriteLine("Enter task title");
-            task.Title = Console.ReadLine();
-
-            Console.WriteLine("Enter task description");
-            task.Description = Console.ReadLine();
-
-            Console.WriteLine("Enter task status");
-            task.Status = (DataLayer.Enums.Status)int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter task type");
-            task.Type = (DataLayer.Enums.TaskType)int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter task priority");
-            task.Priority = (DataLayer.Enums.Priority)int.Parse(Console.ReadLine());
-
-            taskRepository.AddAsync(task).GetAwaiter().GetResult();
-            Console.WriteLine($"Id of the new inserted task: {task.Id}");
-
+            //UpdateTaskTest();
+            DeleteTask();
             Console.ReadLine();
 
             //IEnumerable<DataLayer.Entities.Task> tasks = taskRepository.GetAllAsync()
@@ -56,6 +39,88 @@ namespace ToDo.ConsoleApp
 
             //Console.WriteLine($"Task Id:{task.Id} Title:{task.Title} Description:{task.Description} Priority:{task.Priority} Status:{task.Status} Type:{task.Type}");
             //Console.ReadLine();
+        }
+
+        private static void DeleteTask()
+        {
+            var taskRepository = new AdoNetTasksDbRepository();
+
+            Console.WriteLine("Enter existing task id");
+            var id = int.Parse(Console.ReadLine());
+
+            var task = taskRepository.GetByIdAsync(id).GetAwaiter().GetResult();
+            if (task == null)
+            {
+                Console.WriteLine($"Task with id: {id} does not exist");
+                return;
+            }
+
+
+            taskRepository.RemoveAsync(task).GetAwaiter().GetResult();
+            Console.WriteLine("Successful delete");
+
+            Console.ReadLine();
+        }
+
+        private static void UpdateTaskTest()
+        {
+            var taskRepository = new AdoNetTasksDbRepository();
+            
+            Console.WriteLine("Enter existing task id");
+            var id = int.Parse(Console.ReadLine());
+
+            var task = taskRepository.GetByIdAsync(id).GetAwaiter().GetResult();
+            if (task == null)
+            {
+                Console.WriteLine($"Task with id: {id} does not exist");
+                return;
+            }
+
+            Console.WriteLine("Enter task title");
+            task.Title = Console.ReadLine();
+
+            Console.WriteLine("Enter task description");
+            task.Description = Console.ReadLine();
+
+            Console.WriteLine("Enter task status");
+            task.Status = (DataLayer.Enums.Status)int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter task type");
+            task.Type = (DataLayer.Enums.TaskType)int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter task priority");
+            task.Priority = (DataLayer.Enums.Priority)int.Parse(Console.ReadLine());
+
+            taskRepository.UpdateAsync(task).GetAwaiter().GetResult();
+            Console.WriteLine("Successful update");
+
+            Console.ReadLine();
+        }
+
+        private static void InsertTaskTest()
+        {
+            var taskRepository = new AdoNetTasksDbRepository();
+            var task = new DataLayer.Entities.Task();
+
+            Console.WriteLine("Enter task title");
+            task.Title = Console.ReadLine();
+
+            Console.WriteLine("Enter task description");
+            task.Description = Console.ReadLine();
+
+            Console.WriteLine("Enter task status");
+            task.Status = (DataLayer.Enums.Status)int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter task type");
+            task.Type = (DataLayer.Enums.TaskType)int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter task priority");
+            task.Priority = (DataLayer.Enums.Priority)int.Parse(Console.ReadLine());
+
+            taskRepository.AddAsync(task).GetAwaiter().GetResult();
+            Console.WriteLine($"Id of the new inserted task: {task.Id}");
+
+            Console.ReadLine();
         }
     }
 }

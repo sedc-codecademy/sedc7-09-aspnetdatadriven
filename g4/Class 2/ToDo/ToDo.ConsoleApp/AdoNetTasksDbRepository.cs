@@ -269,14 +269,51 @@ namespace ToDo.ConsoleApp
             }
         }
 
-        public System.Threading.Tasks.Task RemoveAsync(DataLayer.Entities.Task task)
+        public async System.Threading.Tasks.Task RemoveAsync(DataLayer.Entities.Task task)
         {
-            throw new NotImplementedException();
+            using (var sqlConnection = new SqlConnection(_connectionString))
+            {
+                await sqlConnection.OpenAsync();
+                using (var sqlCommand = new SqlCommand
+                {
+                    Connection = sqlConnection,
+                    CommandText = "delete from dbo.Tasks where Id=@Id"
+                })
+                {
+                    //set parameters
+                    sqlCommand.Parameters.AddWithValue("Id", task.Id);
+                    //execute command
+                    int deletedRows = await sqlCommand.ExecuteNonQueryAsync();
+                    if (deletedRows != 1)
+                        throw new Exception("Delete was not successful");
+                }
+            }
         }
 
-        public Task<bool> UpdateAsync(DataLayer.Entities.Task task)
+        public async Task<bool> UpdateAsync(DataLayer.Entities.Task task)
         {
-            throw new NotImplementedException();
+            using (var sqlConnection = new SqlConnection(_connectionString))
+            {
+                await sqlConnection.OpenAsync();
+                using (var sqlCommand = new SqlCommand
+                {
+                    Connection = sqlConnection,
+                    CommandText = "dbo.sp_UpdateTask",
+                    CommandType = System.Data.CommandType.StoredProcedure
+                })
+                {
+                    //set parameters
+                    sqlCommand.Parameters.AddWithValue("Id", task.Id);
+                    sqlCommand.Parameters.AddWithValue("Title", task.Title);
+                    sqlCommand.Parameters.AddWithValue("Description", task.Description);
+                    sqlCommand.Parameters.AddWithValue("Status", task.Status);
+                    sqlCommand.Parameters.AddWithValue("Priority", task.Priority);
+                    sqlCommand.Parameters.AddWithValue("Type", task.Type);
+                    //execute command
+                    int updatedRows = await sqlCommand.ExecuteNonQueryAsync();
+                    return updatedRows == 1;
+                }
+            }
         }
     }
 }

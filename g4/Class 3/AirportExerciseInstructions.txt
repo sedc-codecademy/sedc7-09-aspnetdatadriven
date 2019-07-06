@@ -1,0 +1,46 @@
+1.Identify required models/entities
+	- BusinessObject - class
+		- Id - int
+		- BusinessObjectType - enum/class reference
+		- ResponsibleEmployeeId - int
+		- ResponsibleEmployee - Employee
+		- OpeningHour - Time(DateTime in c#)
+		- WorkHours - int
+		- Name - string
+		- Offers - Collection<Offer>
+	- BusinessObjectType - enum
+		- Caffee bars
+		- Various shopping places
+		- Gift stores
+		- Duty-free centers
+		- Work places
+		- Sleeping chambers and places
+		- Terminals and Gates
+	Employee - class
+		- Id - int
+		- BusinessObjectId - int
+		- BusinessObject - BusinessObject
+		- FullName - string
+	Offer - class
+		- Id - int
+		- Title - string
+		- Description - string
+		- BusinessObjectId - int
+		- BusinessObject - BusinessObject
+		- Price - decimal
+		- DiscountPercentage - int
+2. Create solution Airports
+	- Add new project Airports.Entities(class library .net standard) and add the defined models/entities as classes to it
+	- Add new SqlServerDatabase project to the solution named Airports.Database
+		- Create tables for the defined models/entities
+		- Create database on sqlServer/localDB named AirportsDb
+		- Publish the project(Airports.Database) to the created database(AirportsDb)
+	- Add new project Airports.Repositories.Contracts (class library .net standard)
+		- Add required interfaces for the repositories(one possible option create generic Interface)
+	- Add new project Airports.Repositories.Implementations (class library .net standard)
+		- Create repositories for each of the models/entities (except enum type) and implement coresponding interface
+		- Use Ado.net or Dapper for comunication with database (or both)
+	- Add new console application Airports.ConsoleApp for testing the implemented functionality in the repositories or new webApp (or UnitTests/integrationTests :))
+
+	
+

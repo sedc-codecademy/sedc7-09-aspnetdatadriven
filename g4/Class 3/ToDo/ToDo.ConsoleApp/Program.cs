@@ -7,10 +7,10 @@ namespace ToDo.ConsoleApp
     {
         static void Main(string[] args)
         {
-            InsertTaskTest();
+            //InsertTaskTest();
 
             //UpdateTaskTest();
-            //DeleteTaskTest();
+            DeleteTaskTest();
             //GetCountTest();
             //Console.ReadLine();
 
@@ -70,7 +70,7 @@ namespace ToDo.ConsoleApp
 
         private static void DeleteTaskTest()
         {
-            var taskRepository = new AdoNetTasksDbRepository();
+            var taskRepository = new DapperTaskRepository();
 
             Console.WriteLine("Enter existing task id");
             var id = int.Parse(Console.ReadLine());

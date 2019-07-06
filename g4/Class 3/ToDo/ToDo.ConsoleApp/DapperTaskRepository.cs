@@ -78,15 +78,36 @@ namespace ToDo.ConsoleApp
             }
         }
 
-        public Task RemoveAsync(DataLayer.Entities.Task task)
+        public async Task RemoveAsync(DataLayer.Entities.Task task)
         {
-            throw new NotImplementedException();
+            using (var sqlConnection = new SqlConnection(_connectionString))
+            {
+                var sql = "delete from dbo.SubTask where ParentTaskId=@Id;delete from dbo.Tasks where Id=@Id";
+                int affectedRows = await sqlConnection.ExecuteAsync(sql, new { task.Id });
+
+                if (affectedRows == 0)
+                    throw new Exception("Delete was unsuccessful");
+            }
         }
 
-        public Task<bool> UpdateAsync(DataLayer.Entities.Task task)
+        public async Task<bool> UpdateAsync(DataLayer.Entities.Task task)
         {
-            throw new NotImplementedException();
-            //similar as AddAsync without out parameters
+            using (var sqlConnection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("Id", task.Id);
+                parameters.Add("Title", task.Title);
+                parameters.Add("Description", task.Description);
+                parameters.Add("Priority", task.Priority);
+                parameters.Add("Status", task.Status);
+                parameters.Add("Type", task.Type);
+
+                int updatedRows =
+                    await sqlConnection.ExecuteAsync("sp_UpdateTask", parameters,
+                                                        commandType: System.Data.CommandType.StoredProcedure);
+
+                return updatedRows == 1;
+            }
         }
     }
 }

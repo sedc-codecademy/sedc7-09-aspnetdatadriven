@@ -1,0 +1,6 @@
+Homework class 4
+
+1. Use the database from homework 1 and using entity framework database first aproach to generate the models.
+2. Create interfaces and repositories for authors and books and implemnent the main methods (for CRUD operations)
+
+Bonus: Implement the advanced entity framework navigations properties to display the the book with the author.

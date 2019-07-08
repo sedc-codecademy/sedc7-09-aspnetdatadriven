@@ -1,11 +1,13 @@
 ﻿using Airport.Entities.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Airport.Entities
 {
     public class BusinessObject : BaseEntity
     {
+        [Required, StringLength(100)]
         public string Name { get; set; }
 
         public BusinessObjectType Type { get; set; }

@@ -99,3 +99,4 @@ List<Author> authors = Connection.Query<Author>("dbo.getAuthors",
 * [Dapper Documentation](https://dapper-tutorial.net/dapper)
 * [Article on how to use Dapper with C#](https://www.infoworld.com/article/3025784/how-to-work-with-dapper-in-c.html)
 * [CRUD methods with Dapper](https://github.com/ericdc1/Dapper.SimpleCRUD/)
+* [EF/Dapper/ADO.NET Comparison](https://exceptionnotfound.net/dapper-vs-entity-framework-vs-ado-net-performance-benchmarking/)

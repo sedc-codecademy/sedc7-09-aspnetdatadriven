@@ -1,0 +1,18 @@
+﻿@model ViewModels.ToDoItemViewModel
+@{
+    ViewData["Title"] = "_AddItem";
+}
+
+<form asp-action="Add" asp-controller="Item">
+    <div class="row">
+        <div class="form-group col-lg-9">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="col-lg-3">
+            <input type="submit" value="Add" class="btn btn-primary" style="margin-top: 30px;"/>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,45 @@
+﻿@model CreateAuthorViewModel
+@{
+    ViewBag.Title = "Add Authors";
+}
+<h1>Add new Author:</h1>
+@using (Html.BeginForm())
+{
+    <h3>Author</h3>
+    <div class="row">
+        <div row-md-4>
+            <div class="input-group">
+                <span class="input-group-addon">Name:</span>
+                @Html.TextBoxFor(x => x.Author.Name, new { @class = "form-control", @placeholder = "Name" })
+            </div>
+        </div>
+        <div row-md-4>
+            <div class="input-group">
+                <span class="input-group-addon">Date Of Birth:</span>
+                @Html.TextBoxFor(x => x.Author.DateOfBirth, new { @class = "form-control", @placeholder = "yyyy/M/dd" })
+            </div>
+        </div>
+        <div row-md-4>
+            <div class="input-group">
+                <span class="input-group-addon">Date Of Death:</span>
+                @Html.TextBoxFor(x => x.Author.DateOfDeath, new { @class = "form-control", @placeholder = "yyyy/M/dd" })
+            </div>
+        </div>
+    </div>
+    <h3>Novel</h3>
+    <div class="row">
+        <div row-md-6>
+            <div class="input-group">
+                <span class="input-group-addon">Title:</span>
+                @Html.TextBoxFor(x => x.Novel.Title, new { @class = "form-control", @placeholder = "Title" })
+            </div>
+        </div>
+        <div row-md-6>
+            <div class="input-group">
+                <span class="input-group-addon">Is Read:</span>
+                @Html.TextBoxFor(x => x.Novel.IsRead, new { @class = "form-control", @placeholder = "True/False" })
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-danger" type="submit"></button>
+}

@@ -1,0 +1,18 @@
+﻿@model NameViewModel
+@{ 
+    ViewBag.Title = "Welcome";
+}
+<div class="jumbotron">
+    <h1>Books App</h1>
+    <p>Enter a name fragment:</p>
+    @using (Html.BeginForm())
+    {
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Name Fragment</span>
+            @Html.TextBoxFor(x => x.NameFragment, new { @class = "form-control", @placeholder = "Name Fragment" })
+        </div>
+        <span>Author:</span> @Html.RadioButtonFor(x => x.Option, "Author")
+        <span>Novel:</span> @Html.RadioButtonFor(x => x.Option, "Novel")
+        <p><button class="btn btn-danger btn-lg" type="submit">Go</button></p>
+    }
+</div>

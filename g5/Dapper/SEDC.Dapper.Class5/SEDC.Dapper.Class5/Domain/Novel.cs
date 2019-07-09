@@ -11,7 +11,7 @@ namespace SEDC.Dapper.Class5.Domain
         public string Title { get; set; }
         public int AuthorId { get; set; }
         public Author Author { get; set; }
-        public List<Nomination> Nominations { get; set; }
+        public List<Nomination> Nominations { get; set; } = new List<Nomination>();
         public int NominationsCount
         {
             get

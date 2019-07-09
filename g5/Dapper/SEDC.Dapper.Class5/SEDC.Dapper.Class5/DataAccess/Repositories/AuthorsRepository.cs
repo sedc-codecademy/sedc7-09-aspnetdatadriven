@@ -10,6 +10,7 @@ namespace SEDC.Dapper.Class5.DataAccess
 {
     public class AuthorsRepository : BaseRepository, IAuthorsRepository
     {
+        // DO NOT USE MAGIC STRINGS
         private static readonly string SpGetAllAuthors = "dbo.getAuthors";
 
         public AuthorsRepository(IDbConnection connection)

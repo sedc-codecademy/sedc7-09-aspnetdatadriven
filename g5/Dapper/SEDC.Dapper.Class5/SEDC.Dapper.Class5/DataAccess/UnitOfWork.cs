@@ -18,6 +18,7 @@ namespace SEDC.Dapper.Class5.DataAccess
             _connection.Open();
         }
 
+        // DESTRUCTOR
         ~UnitOfWork()
         {
             dispose();

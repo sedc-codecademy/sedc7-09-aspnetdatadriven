@@ -1,13 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="1.60.6" />
     <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SEDC.AuthorsApp.Domain\SEDC.AuthorsApp.Domain.csproj" />
   </ItemGroup>
 
 </Project>

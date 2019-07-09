@@ -22,9 +22,10 @@ namespace SEDC.Dapper.Class5.DataAccess
             using (var multi = Connection.QueryMultiple("SELECT * FROM Novels; SELECT * FROM Nominations"))
             {
                 novels = multi.Read<Novel>().ToList();
+                List<Nomination> nominations = multi.Read<Nomination>().ToList();
                 foreach (var novel in novels)
                 {
-                    novel.Nominations.Add(multi.Read<Nomination>().Where(x => x.BookID == novel.ID).Single());
+                    novel.Nominations = nominations.Where(x => x.BookID == novel.ID).ToList();
                 }
             }
             return novels;

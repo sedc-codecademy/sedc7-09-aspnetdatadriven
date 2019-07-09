@@ -28,6 +28,15 @@ namespace SEDC.Dapper.Class5
                     {
                         Console.WriteLine($"{author.Name} - {author.DateOfBirth}");
                     }
+                    // Vtor Nachin
+                    //using(IUnitOfWork uow = new UnitOfWork(_connectionString))
+                    //{
+                    //    List<Author> authors = uow.AuthorsRepository.GetAll(fragment).ToList();
+                    //    foreach (Author author in authors)
+                    //    {
+                    //        Console.WriteLine($"{author.Name} - {author.DateOfBirth}");
+                    //    }
+                    //}
                     break;
                 case "2":
                     List<Novel> novels = _uow.NovelsRepository.GetAll().ToList();

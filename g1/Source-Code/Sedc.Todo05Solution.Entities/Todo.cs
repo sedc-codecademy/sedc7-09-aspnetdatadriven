@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sedc.Todo03Solution.Entities
 {
@@ -16,11 +17,28 @@ namespace Sedc.Todo03Solution.Entities
         [Required]
         public DateTime DueDate { get; set; }
         [Required]
+        [Column("Is Completed")]
         public bool IsCompleted { get; set; }
 
-        public string UserId { get; set; }
-        public TodoUser User { get; set; }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public string UserId { get; set; }
+
+        //[ForeignKey("UserId")]
+        public TodoUser User { get; set; }
+        
         public Todo()
         {
             DueDate = DateTime.Now;

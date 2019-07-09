@@ -35,7 +35,22 @@ namespace Sedc.Todo03Solution.Repositories
         public Todo FindById(int id, Func<IQueryable<Todo>, IIncludableQueryable<Todo, object>> include = null)
         {
             IQueryable<Todo> dbSet = _dbContext.Set<Todo>();
+            //var dbSet =
+            //    _dbContext.Set<Todo>()
+            //        .Include(todo => todo.User)
+            //            .ThenInclude(user => user.Todos)
 
+            //    .Select(todo=> new {
+            //        todo.Id,
+            //        todo.IsCompleted
+            //    })  .ToList()
+            // "select n + 1";
+            // to avoid select n+1 problem use "Include() methods",
+            // and use the ToList method in the right place(not to soon, not to late)
+            //foreach (var todo in user.Todos)
+            //{
+
+            //}
             if (include != null)
                 dbSet = include(dbSet);
 

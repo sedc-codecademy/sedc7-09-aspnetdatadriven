@@ -1,0 +1,15 @@
+﻿@model List<AuthorViewModel>
+@{
+    ViewBag.Title = "All Authors";
+}
+<h1>Authors:</h1>
+@foreach (var book in Model)
+{
+<div class="row">
+    <div class="col-md-4">Name: @book.Name</div>
+    <div class="col-md-4">Date Of Birth: @book.DateOfBirth</div>
+    <div class="col-md-4">
+        @Html.ActionLink("Details", "Details", "Author", new { id = book.ID })
+    </div>
+    </div>
+}

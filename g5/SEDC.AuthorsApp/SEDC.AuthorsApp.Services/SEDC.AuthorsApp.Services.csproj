@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SEDC.AuthorsApp.DataAccess\SEDC.AuthorsApp.DataAccess.csproj" />
+    <ProjectReference Include="..\SEDC.AuthorsApp.Domain\SEDC.AuthorsApp.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
